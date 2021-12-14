@@ -1,0 +1,20 @@
+{
+  "name": "rpsls",
+  "version": "1.0.0",
+  "description": "Rock, Paper, Scissors, Lizard, Spock",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nathaniel-brost/RPSLS.git"
+  },
+  "author": "brosticles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nathaniel-brost/RPSLS/issues"
+  },
+  "homepage": "https://github.com/nathaniel-brost/RPSLS#readme"
+}
