@@ -1,4 +1,9 @@
 
+const {
+    Player,
+    HumanPlayer,
+    ArtificialPlayer
+} = require ("./player")
 
 
 class Game {
@@ -13,8 +18,21 @@ class Game {
 
 
     runGame(){
+        this.displayRules;
 
+        while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
 
+        }
+        // the game asks who your name is
+        // the game asks if you want to play the AI or another human
+        // if they choose human, the game asks what is your friend's name
+        // the game asks whether P1 wants to go first
+        // the game displays the array for each human player
+
+        // if P1 = P2, alert 'you chose the same thing", re-run 
+
+        // if P1 chose 0 or 1, add 5 to the value
+        // P1 - P2 = some value. If value = 1 or 2, player 1 gets a point
 
 
 
