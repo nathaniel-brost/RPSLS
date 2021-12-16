@@ -113,7 +113,7 @@ class Game {
         }
         else if (nextPlayer == "computer") {
             this.playerTwo = new ArtificialPlayer ();
-            console.log(this.playerTwo.name);
+            // console.log(this.playerTwo.name);
             console.log("Ok, you are playing against the computer");
         }
         else {
