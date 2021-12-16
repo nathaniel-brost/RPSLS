@@ -25,7 +25,7 @@ class ArtificialPlayer extends Player {
     constructor(name){
         super(name);
     }
-    AiRPSLS (){
+    RPSLS (){
         let choiceArray = [paper, lizard, scissors, rock, spock]; 
         let choice = choiceArray[Math.floor(Math.random() * 5)];
         return choice
