@@ -15,8 +15,10 @@ class HumanPlayer extends Player {
     RPSLS (){
         let choiceCap = PromptSync("What is your choice? 'rock', 'paper', 'scissors', 'lizard', or 'spock'.");
         let choice = choiceCap.toLowerCase();
-        // Boolean(choice == this.choiceArray[0] || this.choiceArray[1] || this.choiceArray[2] || this.choiceArray[3] || this.choiceArray[4]);
-        let boolean = choice == "rock" || "paper" || "scissors" || "lizard" || "spock";
+        while (!this.choiceArray.includes(choice)){
+            choiceCap = PromptSync("That is not a valid choice. Please choose 'rock', 'paper', 'scissors', 'lizard', or 'spock'.")
+            choice = choiceCap.toLowerCase();
+        }
         return choice;
     }
 }
