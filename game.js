@@ -1,5 +1,5 @@
 
-const PromptSync = require("prompt-sync");
+const PromptSync = require("prompt-sync")();
 const {
     Player,
     HumanPlayer,
@@ -10,90 +10,85 @@ const {
 class Game {
     constructor() { 
     this.playerOne = new HumanPlayer ();
+    this.playerTwo
 
-    this.gestures = [paper, lizard, scissors, rock, spock];
+    // this.gestures = [paper, lizard, scissors, rock, spock];
     }
 
 
 
 
     runGame(){
-        this.displayRules;
+        this.displayRules();
 
-        this.enterName;
+        this.enterName();
 
-        // this.chooseOpponent;
-
+        this.chooseOpponent();
+        // the game asks whether P1 wants to go first
+        // console.log("Hit or miss brah");
 
         while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
-            let playerOneRound = this.playerOne.RPSLS; 
-            let playerTwoRound = this.playerTwo.RPSLS;
+            console.log("It's " + this.playerOne.name + "'s turn...")
+            let playerOneRound = this.playerOne.RPSLS(); 
+            console.log("It's " + this.playerTwo.name + "'s turn...")
+            let playerTwoRound = this.playerTwo.RPSLS();
 
             if (playerOneRound == playerTwoRound){
                 console.log("Wow, you both chose the same gesture!");
             }
             else if (playerOneRound == "paper"){
                 if (playerTwoRound == "spock" || playerTwoRound == "rock"){
-                    console.log("Player 1 wins this round!");
+                    console.log(this.playerOne.name + " wins this round!");
                     this.playerOne.score++; 
                 }
                 else {
-                    console.log("Player 2 wins this round!");
+                    console.log(this.playerTwo.name + " wins this round!");
                     this.playerTwo.score++; 
                 }
             }
             else if (playerOneRound == "lizard"){
                 if (playerTwoRound == "paper" || playerTwoRound == "spock"){
-                    console.log("Player 1 wins this round!");
+                    console.log(this.playerOne.name + " wins this round!");
                     this.playerOne.score++; 
                 }
                 else {
-                    console.log("Player 2 wins this round!");
+                    console.log(this.playerTwo.name + " wins this round!");
                     this.playerTwo.score++; 
                 }
             }
             else if (playerOneRound == "scissors"){
                 if (playerTwoRound == "lizard" || playerTwoRound == "paper"){
-                    console.log("Player 1 wins this round!");
+                    console.log(this.playerOne.name + " wins this round!");
                     this.playerOne.score++; 
                 }
                 else {
-                    console.log("Player 2 wins this round!");
+                    console.log(this.playerTwo.name + " wins this round!");
                     this.playerTwo.score++; 
                 }
             }
             else if (playerOneRound == "rock"){
                 if (playerTwoRound == "scissors" || playerTwoRound == "lizard"){
-                    console.log("Player 1 wins this round!");
+                    console.log(this.playerOne.name + " wins this round!");
                     this.playerOne.score++; 
                 }
                 else {
-                    console.log("Player 2 wins this round!");
+                    console.log(this.playerTwo.name + " wins this round!");
                     this.playerTwo.score++; 
                 }
             }
             else if (playerOneRound == "spock"){
                 if (playerTwoRound == "rock" || playerTwoRound == "scissors"){
-                    console.log("Player 1 wins this round!");
+                    console.log(this.playerOne.name + " wins this round!");
                     this.playerOne.score++; 
                 }
                 else {
-                    console.log("Player 2 wins this round!");
+                    console.log(this.playerTwo.name + " wins this round!");
                     this.playerTwo.score++; 
                 }
             }
         }
-        // if they choose human, the game asks what is your friend's name
-        // the game asks whether P1 wants to go first
-        // the game displays the array for each human player
 
-        // if P1 = P2, alert 'you chose the same thing", re-run 
-
-        // if P1 chose 0 or 1, add 5 to the value
-        // P1 - P2 = some value. If value = 1 or 2, player 1 gets a point
-
-
-
+        this.displayWinner();
     }
 
     displayRules() {
@@ -112,19 +107,29 @@ class Game {
 
     chooseOpponent() {
         let nextPlayer = PromptSync("Player 1, would you like to play another human or the computer?")
-        if (nextPlayer = "human"){
+        if (nextPlayer == "human") {
             this.playerTwo = new HumanPlayer ();
             this.playerTwo.name = PromptSync("Player 2, what is your name?");
         }
-        else if (nextPlayer = "computer"){
+        else if (nextPlayer == "computer") {
             this.playerTwo = new ArtificialPlayer ();
-            alert("Ok, you are playing against the computer");
+            console.log(this.playerTwo.name);
+            console.log("Ok, you are playing against the computer");
         }
         else {
             console.log("That is not a valid choice");
             this.chooseOpponent;
         }
     }
+    displayWinner(){
+        if (this.playerOne.score > this.playerTwo.score) {
+            console.log(this.playerOne.name + " wins ROCK PAPER SCISSORS LIZARD SPOCK!");
+        }
+        else if (this.playerOne.score < this.playerTwo.score) {
+            console.log(this.playerTwo.name + " wins ROCK PAPER SCISSORS LIZARD SPOCK!");
+        }
+    }
 }
 
 
+module.exports = Game

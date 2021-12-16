@@ -1,8 +1,8 @@
-const PromptSync = require("prompt-sync");
+const PromptSync = require("prompt-sync")();
 
 class Player {
     constructor(name) {
-        this.score = 0,
+        this.score = 0;
         this.name = name
     }
 }
@@ -14,20 +14,18 @@ class HumanPlayer extends Player {
     RPSLS (){
         // let choiceArray = [paper, lizard, scissors, rock, spock]; 
         let choice = PromptSync("What is your choice? 'rock', 'paper', 'scissors', 'lizard', or 'spock'.");
-        if (choice = "rock") {
-            let 
-        }
         return choice;
     }
 }
 
 class ArtificialPlayer extends Player {
-    constructor(name){
-        super(name);
+    constructor(){
+        super("The computer");
     }
     RPSLS (){
-        let choiceArray = [paper, lizard, scissors, rock, spock]; 
+        let choiceArray = ["paper", "lizard", "scissors", "rock", "spock"]; 
         let choice = choiceArray[Math.floor(Math.random() * 5)];
+        console.log("The computer chose: " + choice);
         return choice
     }
 }
