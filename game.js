@@ -12,7 +12,6 @@ class Game {
     this.playerOne = new HumanPlayer ();
     this.playerTwo
 
-    // this.gestures = [paper, lizard, scissors, rock, spock];
     }
 
 
@@ -27,6 +26,7 @@ class Game {
         // the game asks whether P1 wants to go first
         // console.log("Hit or miss brah");
 
+        let tiedTimes = 0        
         while (this.playerOne.score < 3 && this.playerTwo.score < 3) {
             console.log("It's " + this.playerOne.name + "'s turn...")
             let playerOneRound = this.playerOne.RPSLS(); 
@@ -34,7 +34,13 @@ class Game {
             let playerTwoRound = this.playerTwo.RPSLS();
 
             if (playerOneRound == playerTwoRound){
-                console.log("Wow, you both chose the same gesture!");
+                tiedTimes++;
+                if (tiedTimes == 1){
+                    console.log("Wow, you both chose the same gesture!");
+                }
+                else {
+                    console.log("Wow, you've tied " + tiedTimes + " times in a row!");
+                }
             }
             else if (playerOneRound == "paper"){
                 if (playerTwoRound == "spock" || playerTwoRound == "rock"){
@@ -106,21 +112,33 @@ class Game {
     }
 
     chooseOpponent() {
-        let nextPlayer = PromptSync("Player 1, would you like to play another human or the computer?")
+        let nextPlayerCaps = PromptSync("Player 1, would you like to play another human or the computer?")
+        let nextPlayer = nextPlayerCaps.toLowerCase();
+        while (nextPlayer != "human" && nextPlayer != "computer") {
+            nextPlayerCaps = PromptSync("That is not a valid choice. Please choose 'human' or 'computer'.")
+            nextPlayer = nextPlayerCaps.toLowerCase();
+        }
+        // return nextPlayer;
+        // console.log(nextPlayer);
+        
         if (nextPlayer == "human") {
             this.playerTwo = new HumanPlayer ();
             this.playerTwo.name = PromptSync("Player 2, what is your name?");
         }
-        else if (nextPlayer == "computer") {
+        else {
             this.playerTwo = new ArtificialPlayer ();
-            // console.log(this.playerTwo.name);
             console.log("Ok, you are playing against the computer");
         }
-        else {
-            console.log("That is not a valid choice");
-            this.chooseOpponent;
-        }
+        // else {
+        //     console.log("That is not a valid choice");
+        //     this.chooseOpponent;
+        // }
     }
+
+    oneTwoThreeShoot(){
+
+    }
+
     displayWinner(){
         if (this.playerOne.score > this.playerTwo.score) {
             console.log(this.playerOne.name + " wins ROCK PAPER SCISSORS LIZARD SPOCK!");
